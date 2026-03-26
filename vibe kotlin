@@ -19,7 +19,7 @@ fun main() {
 
     countdown(totalSeconds)
 
-    println("\nSession complete ✅")
+    println("\nSession complete ")
     println("You did what most people can't.\n")
 
     print("Start another session? (y/n): ")
