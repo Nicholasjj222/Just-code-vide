@@ -1,0 +1,47 @@
+import kotlin.system.exitProcess
+
+fun main() {
+    println("=== FOCUS MODE ACTIVATED ===")
+    println("No distractions. Just execution.\n")
+
+    print("Enter focus time (minutes): ")
+    val minutes = readLine()?.toIntOrNull()
+
+    if (minutes == null || minutes <= 0) {
+        println("Invalid input.")
+        return
+    }
+
+    val totalSeconds = minutes * 60
+
+    println("\nFocus session started for $minutes minutes.")
+    println("Stay locked in...\n")
+
+    countdown(totalSeconds)
+
+    println("\nSession complete ✅")
+    println("You did what most people can't.\n")
+
+    print("Start another session? (y/n): ")
+    val choice = readLine()
+
+    if (choice?.lowercase() == "y") {
+        main()
+    } else {
+        println("Stay disciplined. Exiting.")
+        exitProcess(0)
+    }
+}
+
+fun countdown(seconds: Int) {
+    var remaining = seconds
+
+    while (remaining > 0) {
+        val mins = remaining / 60
+        val secs = remaining % 60
+
+        print("\rTime left: %02d:%02d".format(mins, secs))
+        Thread.sleep(1000)
+        remaining--
+    }
+}
